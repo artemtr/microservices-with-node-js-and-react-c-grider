@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 const commentsById = {};
 
 app.get("/posts/:id/comments", (req, res) => {
-  console.log(req.body);
-  res.send(post);
+  console.log(commentsById[req.params.id]);
+  res.send(commentsById[req.params.id]);
 });
 
 app.post("/posts/:id/comments", (req, res) => {
@@ -20,6 +20,7 @@ app.post("/posts/:id/comments", (req, res) => {
   const comments = commentsById[req.params.id] || [];
   comments.push({ id: commentsId, content });
   commentsById[req.params.id] = comments;
+  res.status(201).send(comments);
 });
 
 app.listen(5001, () => {
