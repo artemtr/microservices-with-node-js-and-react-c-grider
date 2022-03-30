@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const { randomBytes } = require("crypto");
@@ -6,9 +7,9 @@ const { randomBytes } = require("crypto");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const commentsById = {};
-
 app.get("/posts/:id/comments", (req, res) => {
   console.log(commentsById[req.params.id]);
   res.send(commentsById[req.params.id]);
