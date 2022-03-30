@@ -1,13 +1,15 @@
-import React from "react";
-import CreatePost from "./CreatePost";
-import PostsList from "./PostsList";
+import React from 'react';
+import PostCreate from './PostCreate';
+import PostList from './PostList';
 
-export default function App() {
+export default () => {
   return (
-    <div>
-      <h2>Create post site</h2>
-      <CreatePost />
-      <PostsList />
+    <div className="container">
+      <h1>Create Post</h1>
+      <PostCreate />
+      <hr />
+      <h1>Posts</h1>
+      <PostList />
     </div>
   );
-}
+};
