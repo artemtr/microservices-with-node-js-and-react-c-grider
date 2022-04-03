@@ -5,7 +5,7 @@ export default ({ postId }) => {
   const [comments, setComment] = useState({});
 
   const fetchComments = async () => {
-    const res = await axios.get(
+    const res = await axios.post(
       `http://localhost:4001/posts/${postId}/comments`
     );
 
