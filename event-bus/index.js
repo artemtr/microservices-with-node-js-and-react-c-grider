@@ -1,18 +1,18 @@
-import React from "react";
-import axios from "axios";
-import bodyParser from "body-parser";
+import axios from 'axios'
+import bodyParser from 'body-parser'
+import express from 'express'
 
-const app = express();
-app.use(bodyParser.json());
+const app = express()
+app.use(bodyParser.json())
 
-app.post("/events", (req, res) => {
-  const event = req.body;
-  axios.post("http://localhost:4001/events", event);
-  axios.post("http://localhost:4002/events", event);
-  axios.post("http://localhost:4003/events", event);
-  res.send({ status: "ok" });
-});
+app.post('/events', (req, res) => {
+  const event = req.body
+  axios.post('http://localhost:4001/events', event)
+  axios.post('http://localhost:4002/events', event)
+  axios.post('http://localhost:4009/events', event)
+  res.send({status: 'ok'})
+})
 
-app.listen(4005, () => {
-  console.log("Listening on 4001");
-});
+app.listen(4010, () => {
+  console.log('Listening on 4001')
+})
