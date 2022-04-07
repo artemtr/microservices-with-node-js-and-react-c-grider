@@ -17,8 +17,8 @@ export default ({postId}) => {
 
   const renderedComments = Object.values(comments).map(comment => {
     return (
-      <div>
-        <li key={comment.id}>{comment.content}</li>
+      <div key={comment.id}>
+        <li>{comment.content}</li>
       </div>
     )
   })
