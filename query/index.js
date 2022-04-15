@@ -8,6 +8,10 @@ app.use(cors())
 
 const info = {}
 
+app.get('/posts', (req, res) => {
+  res.send(info)
+})
+
 app.post('/events', (req, res) => {
   const {type, data} = req.body
   console.log(type, data)
