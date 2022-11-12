@@ -1,58 +1,59 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v3
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./k8s/*
 build:
-  local:
-    push: false
   artifacts:
     - image: stephengrider/client
       context: client
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.js'
+          - src: src/**/*.js
             dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: stephengrider/comments
       context: comments
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.js'
             dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: stephengrider/event-bus
       context: event-bus
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.js'
             dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: stephengrider/moderation
       context: moderation
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.js'
             dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: stephengrider/posts
       context: posts
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.js'
             dest: .
+      docker:
+        dockerfile: Dockerfile
     - image: stephengrider/query
       context: query
-      docker:
-        dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.js'
             dest: .
+      docker:
+        dockerfile: Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - ./k8s/*
+deploy:
+  kubectl: {}
